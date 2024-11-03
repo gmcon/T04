@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejemplos de Aplicaciones</title>
+    <style>
+        body {
+            display: flex;
+            height: 100vh;
+            margin: 0;
+        }
+        .sidebar {
+            width: 17%;
+            overflow-y: scroll;
+            border-right: 2px solid #ccc;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar li {
+            padding: 5px;
+            cursor: pointer;
+        }
+        .sidebar li.active {
+            background-color: lightgreen;
+        }
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+        .main-content iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h3>Aplicaciones T04</h3>
+        <ul id="appList">
+            <!-- Generar frases desde un arreglo -->
+            <script>
+                const appDescriptions = [
+                    "01 Dibujo Interactivo",        // alvarez yanina
+                    "02 Juego de Plataforma",       // alvarez vicente
+                    "03 Visualizador Música",       // araya
+                    "04 Partículas Interactivas",   // burgos
+                    "05 Laberintos Aleatorios",     // cancino
+                    "06 Simulador Sistema Solar",   // cotal
+                    "07 Descubrir par Imágenes",    // curihual
+                    "08 Piano Virtual",             // curipan
+                    "09 Galería de Imágenes",       // escobar
+                    "10 Visualizar Modelos 3D",     // garces
+                    "11 Chat Simulado",             // gutierrez
+                                                    // huaiquinao
+                    "13 Juego del Ahorcado",        // huenuman
+                                                    // llanca
+                    "15 Calendario Interactivo",    // monsalvez
+                    "16 Cronómetro y Temporizador", // mora
+                    "17 Aplicación del Clima",      // muñoz
+                    "18 Lista de Tareas",           // parada
+                    "20 Juego de la Vida",          // pichara
+                    "21 Tutor de Mecanografía",     // ramirez
+                    "22 Juego Naves Espaciales",    // riquelme
+                    "23 Historia Interactiva",      // sandoval
+                    "24 Pintura con Efectos",       // santana
+                    "25 Mapa Interactivo",          // sepulveda
+                    "26 Convertidor Unidades",      // sevilla
+                                                    // suarez
+                    "28 Simulación Física Básica",  // ulloa
+                    "29 Aplicación de Sonidos",     // valdes
+                    "30 Juego de Trivia",           // valenzuela
+                    "31 Recetario interactivo",     // vallejo
+                    "32 Generador de Fractales"     // zapata
+                ];
+
+                appDescriptions.forEach((description, index) => {
+                    document.write(`<li onclick="loadApp('app${index + 1}.html', this)">${description}</li>`);
+                });
+            </script>
+        </ul>
+    </div>
+    <div class="main-content">
+        <iframe id="appViewer" src=""></iframe>
+    </div>
+
+    <script>
+        function loadApp(appPath, element) {
+            // Cambiar la fuente del iframe
+            document.getElementById('appViewer').src = appPath;
+
+            // Remover clase activa de todas las frases
+            const items = document.querySelectorAll('.sidebar li');
+            items.forEach(item => item.classList.remove('active'));
+
+            // Agregar clase activa al elemento clicado
+            element.classList.add('active');
+        }
+    </script>
+</body>
+</html>
